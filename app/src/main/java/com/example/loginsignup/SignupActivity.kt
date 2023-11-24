@@ -13,7 +13,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class SignupActivity : AppCompatActivity() {
-val TAG = SignupActivity::class.java.simpleName
+    val TAG = SignupActivity::class.java.simpleName
     private lateinit var binding: ActivitySignupBinding
     private lateinit var firebaseAuth: FirebaseAuth
     lateinit var signupbtn: Button
@@ -68,14 +68,17 @@ val TAG = SignupActivity::class.java.simpleName
         val db = Firebase.firestore
 
         val name = binding.signupFullname.text.toString()
+        val email = binding.signupEmail.text.toString()
         val phone = binding.signupPhone.text.toString()
         val govtid = binding.signupAadhar.text.toString()
 
+        Log.i(name,"hello")
 
         val user = hashMapOf(
             "Name" to name,
+            "Email" to email,
             "Phone" to phone,
-            "Aadhar" to govtid,
+            "Aadhar" to govtid
         )
         db.collection("users")
             .add(user)
